@@ -61,12 +61,7 @@
 
 #define F_CPU 16000000UL
 #define BAUD 9600
-#define BAUD_PRESCALE (((F_CPU / (BAUD * 16UL)) - 1) / 2)
-#define USART_BAUD_PRESCALE BAUD_PRESCALE
-#define USART_RX_BUFFER_SIZE 128
 
-
-//
 // ANALOG 
 // PORTC (PC0-PC6)
 #define PIN_A0 PC0
@@ -75,10 +70,9 @@
 #define PIN_A3 PC3
 #define PIN_A4 PC4
 #define PIN_A5 PC5
-#define PIN_SDA A4
-#define PIN_SCL A5
+#define NUM_ANALOG_PINS 8
 
-//
+
 // DIGITAL
 // PORTB (PB0-PB7)
 #define PIN_D8  PB0
@@ -90,6 +84,7 @@
 #define PIN_XTAL1 PB6 // QuartzRes
 #define PIN_XTAL2 PB7 // QuartzRes
 
+// DIGITAL
 // PORTD (PD0-PD7)
 #define PIN_D0 PD0
 #define PIN_D1 PD1
@@ -100,19 +95,25 @@
 #define PIN_D6 PD6
 #define PIN_D7 PD7
 
-
+// Data
 #define PIN_RX D0
 #define PIN_TX D1
-#define PIN_INT0 D2 // interrupt
-#define PIN_INT1 D3 // interrupt
-#define PIN_PWM_TIMER_0 // Timer0
-#define PIN_PWM_TIMER_1 // Timer0
 
+// Interrupt
+#define PIN_INT0 D2
+#define PIN_INT1 D3
 
+// SPI
+#define PIN_SPI_MOSI PIN_D11
+#define PIN_SPI_MISO PIN_D12
+#define PIN_SPI_SCK  PIN_D13
 
+// I2C
+#define PIN_SDA PIN_A4
+#define PIN_SCL PIN_A5
+
+// SYS
 #define RESET PC6
-
-
 
 #endif
 
