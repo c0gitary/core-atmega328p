@@ -54,13 +54,14 @@
 #ifndef DEFS_H
 #define DEFS_H
 
-#define __AVR_ATmega328P__
-#define __AVR_ATmega328__
+#include <avr/io.h>
 
-#include <avr/iom328p.h>
+#define INPUT 0
+#define OUTPUT 1
 
-#define F_CPU 16000000UL
-#define BAUD 9600
+#define LOW 0
+#define HIGH 1
+
 
 // ANALOG 
 // PORTC (PC0-PC6)
@@ -70,7 +71,7 @@
 #define PIN_A3 PC3
 #define PIN_A4 PC4
 #define PIN_A5 PC5
-#define NUM_ANALOG_PINS 8
+#define NUM_ANALOG_PINS 6
 
 
 // DIGITAL
@@ -95,7 +96,9 @@
 #define PIN_D6 PD6
 #define PIN_D7 PD7
 
-// Data
+#define NUM_DIGITAL_PINS 14
+
+// Data (UART)
 #define PIN_RX D0
 #define PIN_TX D1
 
@@ -114,6 +117,13 @@
 
 // SYS
 #define RESET PC6
+
+// PWM
+#define PIN_D11_PWM PIN_D11
+#define PIN_D10_PWM PIN_D10
+#define PIN_D9_PWM  PIN_D9
+#define PIN_D5_PWM  PIN_D5
+#define PIN_D3_PWM  PIN_D3
 
 #endif
 
