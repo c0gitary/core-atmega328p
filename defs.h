@@ -7,6 +7,17 @@
     'x' - port numbering
     'n' - port bit number
 
+
+    I/O-space: (0x00-0x1f) PORTB, TCCR0a, ...
+    Flash mem: (>=0x20) PORTD, SPDR, ...
+        
+    ANALOG:
+    ADMUX - select channel & reference voltage
+    ADCSRA - control of the freq converter & diveder
+    ADCL - read result
+    ADCH - read result
+
+
     PORTB (PB0-PB7) 
     |----------|------|------------
     | BIT PORT | PIN  |  FN
@@ -55,6 +66,10 @@
 #define DEFS_H
 
 #include <avr/io.h>
+#include <util/delay.h>
+
+#define DelayMs _delay_ms
+#define DelayUs _delay_us
 
 #define INPUT 0
 #define OUTPUT 1
