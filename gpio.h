@@ -38,7 +38,6 @@
     (&PORTB) )
 
 
-
 #define _SetOutput(pin) GPIO_SET_BIT(*(volatile uint8_t*)(GPIO_GET_DDR(pin)), GPIO_PIN_TO_BIT(pin))
 #define _SetInput(pin) GPIO_CLEAR_BIT(*(volatile uint8_t*)(GPIO_GET_DDR(pin)), GPIO_PIN_TO_BIT(pin))
 
@@ -46,18 +45,13 @@
 #define _SetPinLow(pin) GPIO_CLEAR_BIT(*(volatile uint8_t*)(GPIO_GET_PORT(GPIO_GET_DDR(pin))), GPIO_PIN_TO_BIT(pin))
 
 // DIGITAL
-#define DigitalWrite(pin, state) ((state) ? _SetPinHigh(pin) : _SetPinLow(pin))
-#define DigitalRead(pin) GPIO_READ_BIT(*(volatile uint8_t*)(GPIO_GET_PORT(GPIO_GET_DDR(pin))), GPIO_PIN_TO_BIT(pin))
+#include "gpioDigital.h"
 
 // ANALOG
-#define GPIO_ADC_INIT() { \
-  GPIO_SET_BIT(ADMUX, REFS0);\
-  GPIO_SET_BIT(ADCSRA, ADEN | GPIO_BIT(ADPS2) |  GPIO_BIT(ADPS1) | GPIO_BIT(ADPS0));\
-  GPIO_SET(DIDR0, 0x3f);\
-}
+#include "gpioAnalog.h"
 
-extern uint16_t AnalogRead(uint16_t pin);
-
+// PWM
+#include "gpioPwm.h"
 
 
 // MASTER 

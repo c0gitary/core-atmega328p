@@ -19,47 +19,50 @@
 
 
     PORTB (PB0-PB7) 
-    |----------|------|------------
-    | BIT PORT | PIN  |  FN
-    |----------|------|------------
-    |   PB0    |  14  | ICP1, CLKO 
-    |   PB1    |  15  | OC1A(PWM), TIMER1
-    |   PB2    |  16  | SS(SPI), OC1B(PWM)
-    |   PB3    |  17  | MOSI(SPI), OC2A(PWM)
-    |   PB4    |  18  | MISO(SPI)
-    |   PB5    |  19  | SCK(SPI)
-    |   PB6    |  9   | XTAL1(QuartzRes)  !NON-GPIO
-    |   PB7    |  10  | XTAL2(QuartzRes)  !NON-GPIO
-    |----------|------|------------
+    |----------|------|------|------------
+    | BIT PORT | PIN  | PIN A|  FN
+    |----------|------|------|------------
+    |   PB0    |  14  |  D8  | ICP1, CLKO 
+    |   PB1    |  15  |  D9  | OC1A(PWM), Timer1
+    |   PB2    |  16  |  D10 | SS(SPI), OC1B(PWM), Timer1
+    |   PB3    |  17  |  D11 | MOSI(SPI), OC2A(PWM), Timer2
+    |   PB4    |  18  |  D12 | MISO(SPI)
+    |   PB5    |  19  |  D13 | SCK(SPI)
+    |   PB6    |  9   |  --  | XTAL1(QuartzRes)  !NON-GPIO
+    |   PB7    |  10  |  --  | XTAL2(QuartzRes)  !NON-GPIO
+    |----------|------|------|------------
 
 
     PORTC (PC0-PC6) 
-    |----------|------|------------
-    | BIT PORT | PIN  |  FN
-    |----------|------|------------
-    |   PC0    |  23  | ADC0 (AnalogInput)
-    |   PC1    |  24  | ADC1 (AnalogInput)
-    |   PC2    |  25  | ADC2 (AnalogInput)
-    |   PC3    |  26  | ADC3 (AnalogInput)
-    |   PC4    |  27  | ADC4 (AnalogInput), SDA(I2C)
-    |   PC5    |  28  | ADC5 (AnalogInput), SCL(I2C)
-    |   PC6    |  1   | Reset !NON-GPIO
-    |----------|------|------------
+    |----------|------|------|------------
+    | BIT PORT | PIN  | PIN A|  FN
+    |----------|------|------|------------
+    |   PC0    |  23  |  A0  | ADC0 (AnalogInput)
+    |   PC1    |  24  |  A1  | ADC1 (AnalogInput)
+    |   PC2    |  25  |  A2  | ADC2 (AnalogInput)
+    |   PC3    |  26  |  A3  | ADC3 (AnalogInput)
+    |   PC4    |  27  |  A4  | ADC4 (AnalogInput), SDA(I2C)
+    |   PC5    |  28  |  A5  | ADC5 (AnalogInput), SCL(I2C)
+    |   PC6    |  1   |  RES | Reset !NON-GPIO
+    |----------|------|------|------------
+    |   ADC6   |  1   |  A6  | ADC6 (AnalogInput)
+    |   ADC7   |  1   |  A7  | ADC7 (AnalogInput)
+    |----------|------|------|------------
 
     
     PORTD (PD0-PD7) 
-    |----------|------|------------
-    | BIT PORT | PIN  |  FN
-    |----------|------|------------
-    |   PD0    |  2   | RXD(UART[SerialCommunication])
-    |   PD1    |  3   | TXD(UART[SerialCommunication])
-    |   PD2    |  4   | INT0(internal interrupt)
-    |   PD3    |  5   | INT1, OC2B(PWM)
-    |   PD4    |  6   | XCK(USART), T0
-    |   PD5    |  11  | OC0B(PWM), T1
-    |   PD6    |  12  | OC0A(PWM), AIN0 
-    |   PD7    |  13  | AIN1 
-    |----------|------|------------
+    |----------|------|------|------------
+    | BIT PORT | PIN  | PIN A|  FN
+    |----------|------|------|------------
+    |   PD0    |  2   |  D0  | RXD(UART[SerialCommunication])
+    |   PD1    |  3   |  D1  | TXD(UART[SerialCommunication])
+    |   PD2    |  4   |  D2  | INT0(internal interrupt)
+    |   PD3    |  5   |  D3  | INT1, OC2B(PWM), Timer2
+    |   PD4    |  6   |  D4  | XCK(USART), Timer0
+    |   PD5    |  11  |  D5  | OC0B(PWM), Timer0
+    |   PD6    |  12  |  D6  | OC0A(PWM), AIN0 
+    |   PD7    |  13  |  D7  | AIN1 
+    |----------|------|------|------------
 
 */
 #ifndef DEFS_H
@@ -134,11 +137,12 @@
 #define RESET PC6
 
 // PWM
-#define PIN_D11_PWM PIN_D11
-#define PIN_D10_PWM PIN_D10
-#define PIN_D9_PWM  PIN_D9
-#define PIN_D5_PWM  PIN_D5
-#define PIN_D3_PWM  PIN_D3
+#define PIN_D3_PWM  PIN_D3  // T2-8b
+#define PIN_D11_PWM PIN_D11 // T2-8b
+#define PIN_D10_PWM PIN_D10 // T1-16b
+#define PIN_D9_PWM  PIN_D9  // T1-16b
+#define PIN_D6_PWM  PIN_D6  // T0-8b
+#define PIN_D5_PWM  PIN_D5  // T0-8b
 
 #endif
 
