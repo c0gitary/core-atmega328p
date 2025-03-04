@@ -18,6 +18,8 @@
 
 #define GPIO_IS_VALID(pin) ((pin) >= PIN_D0 && (pin) <= PIN_D13) || ((pin) >= PIN_A0 && (pin) <= PIN_A5)
 
+#define GPIO_IS_ANALOG(pin) ((pin) >= PIN_A0 && (pin) <= PIN_A5)
+
 #define GPIO_GET_DDR(pin) \
     ((pin) >= PIN_D8 && (pin) <= PIN_D13) ? (&DDRB) : \
     ((pin) >= PIN_D0 && (pin) <= PIN_D7) ? (&DDRD) : \
@@ -55,10 +57,10 @@
 
 
 // MASTER 
-#define PinMode(pin, mode) ((mode) ? (_SetOutput(pin)) : (_SetInput(pin)))
+#define SetPin(pin, mode) ((mode) ? (_SetOutput(pin)) : (GPIO_IS_ANALOG(pin) ? (GPIO_ANALOG_PIN_INPUT(pin)) : _SetInput(pin)))
 #define TogglePin(pin) GPIO_TOGGLE_BIT(*(volatile uint8_t*)(GPIO_GET_PORT(GPIO_GET_DDR(pin))), GPIO_PIN_TO_BIT(pin))
 
 
 
 
-#endif /*PORT_MANIPULATION_H*/
+#endif /*GPIO_H*/
