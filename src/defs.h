@@ -74,9 +74,11 @@
 #define DelayMs _delay_ms
 #define DelayUs _delay_us
 
-#define INPUT 0
-#define OUTPUT 1
+// GPIO
+#define INPUT (0)
+#define OUTPUT (1)
 
+// STATE
 #define LOW 0
 #define HIGH 1
 
@@ -89,6 +91,7 @@
 #define PIN_A3 PC3
 #define PIN_A4 PC4
 #define PIN_A5 PC5
+
 #define NUM_ANALOG_PINS 6
 
 
@@ -139,10 +142,9 @@
 // PWM
 #define PIN_D3_PWM  PIN_D3  // T2-8b
 #define PIN_D11_PWM PIN_D11 // T2-8b
-#define PIN_D10_PWM PIN_D10 // T1-16b
+#define PIN_D10_PWM PIN_D10 // T1-16bs
 #define PIN_D9_PWM  PIN_D9  // T1-16b
 #define PIN_D6_PWM  PIN_D6  // T0-8b
 #define PIN_D5_PWM  PIN_D5  // T0-8b
 
 #endif
-
